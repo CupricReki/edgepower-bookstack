@@ -1,0 +1,38 @@
+version: '2'
+services:
+
+  mysql:
+    image: mysql:5.7.20
+    environment:
+    - MYSQL_ROOT_PASSWORD=secret
+    - MYSQL_DATABASE=bookstack
+    - MYSQL_USER=bookstack
+    - MYSQL_PASSWORD=secret
+    volumes:
+    - mysql-data:/var/lib/mysql
+
+  bookstack:
+    image: ce6a4632c30a
+    depends_on:
+    - mysql
+    environment:
+    - DB_HOST=mysql:3306
+    - DB_DATABASE=bookstack
+    - DB_USERNAME=bookstack
+    - DB_PASSWORD=secret
+    - GOOGLE_APP_ID=611333768376-d6m55iik4nn47nfcpc4l1qelu5roqblb.apps.googleusercontent.com
+    - GOOGLE_APP_SECRET=_cwxA-kbxEC7cBaGkfHWDTE2
+    - APP_URL=https://kb.edgepower.com
+    volumes:
+    - uploads:/var/www/bookstack/public/uploads
+    - storage-uploads:/var/www/bookstack/public/storage
+    - /etc/letsencrypt/live/kb.edgepower.com:/etc/letsencrypt/live/kb.edgepower.com
+    - /etc/letsencrypt/archive/kb.edgepower.com:/etc/letsencrypt/archive/kb.edgepower.com
+    ports:
+    - "80:80"
+    - "443:443"
+
+volumes:
+ mysql-data:
+ uploads:
+ storage-uploads:
