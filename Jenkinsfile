@@ -9,7 +9,7 @@ exit 0'''
     }
     stage('Deploy docker') {
       steps {
-        sh 'docker compose up -d'
+        sh 'docker compose up'
       }
     }
     stage('Tests') {
