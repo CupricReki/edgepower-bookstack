@@ -20,8 +20,8 @@ services:
     - DB_DATABASE=bookstack
     - DB_USERNAME=bookstack
     - DB_PASSWORD=secret
-    - GOOGLE_APP_ID=611333768376-d6m55iik4nn47nfcpc4l1qelu5roqblb.apps.googleusercontent.com
-    - GOOGLE_APP_SECRET=_cwxA-kbxEC7cBaGkfHWDTE2
+    - GOOGLE_APP_ID=<SECRET>
+    - GOOGLE_APP_SECRET=<SECRET>
     - APP_URL=https://kb.edgepower.com
     volumes:
     - uploads:/var/www/bookstack/public/uploads
